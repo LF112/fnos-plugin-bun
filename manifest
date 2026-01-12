@@ -1,8 +1,13 @@
 appname      = fnos-plugin-bun
 version      = 1.0.0
 display_name = Bun
-desc         = Bun is an all-in-one toolkit for developing modern JavaScript/TypeScript applications.
-arch         = x86_64
+desc         = Bun 是一款快速、可渐进式采用的一体化 JavaScript、TypeScript 和 JSX 工具包。可在 Node.js 项目中单独使用如 bun test 或 bun install 等工具，也可采用内置快速 JavaScript 运行时、打包器、测试运行器和包管理器的完整技术栈。Bun 致力于实现 100% 的 Node.js 兼容性。<br /><br /> 飞牛 OS 的 Bun 环境支持（替代 NodeJS），利用 Bun 自带的工具包快速完成轻量级功能完备的飞牛应用。
+arch         = all
 source       = thirdparty
-maintainer   = LF112(futiwolf)
+maintainer   = oven-sh
+maintainer_url = https://bun.com
 distributor  = LF112(futiwolf)
+distributor_url = https://lf112.net
+ctl_stop = false
+disable_authorization_path = true
+checkport = false
