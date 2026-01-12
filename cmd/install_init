@@ -1,5 +1,83 @@
 #!/bin/bash
 
-### This script is called before the user installs the application.
+W_INSTALL_TYPE="$wizard_install_type"
+GITHUB="$wizard_github_path"
+
+error() {
+    echo "$@" > $TRIM_TEMP_LOGFILE
+    exit 1
+}
+
+if [ "$W_INSTALL_TYPE" == "online" ]; then
+    platform=$(uname -ms)
+
+    command -v unzip >/dev/null ||
+        error '需要安装 unzip 工具'
+
+    case $platform in
+    'Darwin x86_64')
+        target=darwin-x64
+        ;;
+    'Darwin arm64')
+        target=darwin-aarch64
+        ;;
+    'Linux aarch64' | 'Linux arm64')
+        target=linux-aarch64
+        ;;
+    'MINGW64'*)
+        error '不支持 Windows 系统'
+        ;;
+    'Linux riscv64')
+        error '不支持 riscv64 架构'
+        ;;
+    'Linux x86_64' | *)
+        target=linux-x64
+        ;;
+    esac
+
+    case "$target" in
+    'linux'*)
+        if [ -f /etc/alpine-release ]; then
+            target="$target-musl"
+        fi
+        ;;
+    esac
+
+    github_repo="$GITHUB/oven-sh/bun"
+
+    # 如果 AVX2 不支持，则使用 -baseline 构建
+    case "$target" in
+    'darwin-x64'*)
+        if [[ $(sysctl -a | grep machdep.cpu | grep AVX2) == '' ]]; then
+            target="$target-baseline"
+        fi
+        ;;
+    'linux-x64'*)
+        if [[ $(cat /proc/cpuinfo | grep avx2) = '' ]]; then
+            target="$target-baseline"
+        fi
+        ;;
+    esac
+
+    exe_name=bun
+    bun_uri=$github_repo/releases/latest/download/bun-$target.zip
+
+    install_env=/var/apps/fnos-plugin-bun
+    bin_env=\$$install_env/bin
+
+    install_dir=${!install_env:-$HOME/.bun}
+    bin_dir=$install_dir/bin
+    exe=$bin_dir/bun
+
+    error "bun_uri=$bun_uri, install_dir=$install_dir, bin_dir=$bin_dir, exe=$exe"
+
+    if [[ ! -d $bin_dir ]]; then
+        mkdir -p "$bin_dir" ||
+            error "无法创建安装目录 \"$bin_dir\""
+    fi
+
+else
+    error "敬请期待"
+fi
 
 exit 0
