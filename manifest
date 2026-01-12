@@ -1,0 +1,8 @@
+appname      = fnos-plugin-bun
+version      = 1.0.0
+display_name = Bun
+desc         = Bun is an all-in-one toolkit for developing modern JavaScript/TypeScript applications.
+arch         = x86_64
+source       = thirdparty
+maintainer   = LF112(futiwolf)
+distributor  = LF112(futiwolf)
