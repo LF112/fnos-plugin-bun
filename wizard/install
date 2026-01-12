@@ -1,0 +1,45 @@
+[
+    {
+        "stepTitle": "安装方式",
+        "items": [
+            {
+                "type": "radio",
+                "field": "wizard_install_type",
+                "label": "安装类型",
+                "initValue": "online",
+                "options": [
+                    {
+                        "label": "离线安装 (Bun v1.3.5) 仅支持 x86_64 架构",
+                        "value": "standard"
+                    },
+                    {
+                        "label": "在线安装",
+                        "value": "online"
+                    }
+                ],
+                "rules": [
+                    {
+                        "required": true,
+                        "message": "请选择安装类型"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "field": "wizard_github_path",
+                "label": "在线安装使用的 Github 地址（可配置镜像地址）",
+                "initValue": "https://github.com",
+                "rules": [
+                    {
+                        "required": false,
+                        "message": "请输入 Github 地址"
+                    },
+                    {
+                        "pattern": "^https?://(?:www.)?[-a-zA-Z0-9@:%._+~#=]{1,256}.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_+.~#?&/=]*)$",
+                        "message": "请输入正确的 URL 地址"
+                    }
+                ]
+            }
+        ]
+    }
+]
