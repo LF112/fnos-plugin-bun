@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="ICON_256.PNG" alt="Bun Logo" width="128" height="128">
+<img src="ICON_256.PNG" alt="fnos-plugin-bun Logo" width="128" height="128">
 
 # fnos-plugin-bun
 
@@ -8,9 +8,7 @@
 
 [![Version](https://img.shields.io/badge/version-1.3.6-blue.svg)](https://github.com/LF112/fnos-plugin-bun)
 [![Bun](https://img.shields.io/badge/Bun-v1.3.6-black.svg)](https://bun.sh)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-
-[简体中文](README.md) | [English](README_EN.md)
+[![FnOS](https://img.shields.io/badge/FnOS-Plugin-orange.svg)](https://www.fnnas.com)
 
 </div>
 
@@ -151,7 +149,7 @@ fnos-plugin-bun/
 
 ## 📄 许可证
 
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+本项目遵循相应的开源许可协议。Bun 本身遵循 MIT 许可证。
 
 ## 🔗 相关链接
 
