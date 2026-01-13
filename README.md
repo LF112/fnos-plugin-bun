@@ -30,9 +30,8 @@ fnos-plugin-bun 是为**飞牛OS**（FnOS）打造的 Bun 运行时环境支持�
 
 - **操作系统**: FnOS (飞牛OS)
 - **架构支持**: 
-  - ✅ x86_64 (AMD64)
-  - ✅ ARM64 (aarch64)
-  - ✅ macOS (Darwin x64/arm64)
+  - ✅ x86_64 (AMD64) - 支持离线/在线安装
+  - ✅ ARM64 (aarch64) - 仅支持在线安装
 - **依赖**: unzip (在线安装时需要)
 
 ## 📦 安装方式
@@ -144,8 +143,8 @@ fnos-plugin-bun/
 
 ## 📝 开发者
 
-- **维护者**: [oven-sh](https://github.com/oven-sh)
-- **分发者**: [LF112 (futiwolf)](https://lf112.net)
+- **Bun 维护者**: [oven-sh](https://bun.com)
+- **插件分发者**: [LF112 (futiwolf)](https://lf112.net)
 
 ## 📄 许可证
 
