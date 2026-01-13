@@ -9,7 +9,7 @@
                 "initValue": "online",
                 "options": [
                     {
-                        "label": "离线安装 (Bun v1.3.5) 仅支持 x86_64 架构",
+                        "label": "离线安装 (Bun v1.3.6) 仅支持 x86_64 架构",
                         "value": "standard"
                     },
                     {

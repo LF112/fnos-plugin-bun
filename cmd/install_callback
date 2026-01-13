@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 W_INSTALL_TYPE="$wizard_install_type"
 
 error() {
@@ -8,20 +7,19 @@ error() {
     exit 1
 }
 
+exe_name=bun
+
+install_env=/var/apps/fnos-plugin-bun/target
+bin_dir=$install_env/bin
+exe=$bin_dir/$exe_name
 
 if [ "$W_INSTALL_TYPE" == "online" ]; then
-    exe_name=bun
-
     tmp_dir=/tmp/bun-tmp-package
     zip_file=$tmp_dir/$exe_name.zip
 
     if [[ ! -f $zip_file ]]; then
         error "无法找到 Bun 压缩包 \"$zip_file\""
     fi
-
-    install_env=/var/apps/fnos-plugin-bun/target
-    bin_dir=$install_env/bin
-    exe=$bin_dir/$exe_name
 
     if [[ ! -d $bin_dir ]]; then
         mkdir -p "$bin_dir" ||
@@ -40,6 +38,21 @@ if [ "$W_INSTALL_TYPE" == "online" ]; then
         error '无法设置 Bun 可执行文件的权限'
 
     rm -r "$bun_unzip_dir" "$zip_file" "$tmp_dir"
+else
+    bun_zip_file=$(find $install_env/ -type f -name 'bun-*' | sort | head -n 1)
+    bun_zip_name=$(basename $bun_zip_file | sed 's/.zip//')
+    
+    if [[ ! -f $bun_zip_file ]]; then
+        error "无法找到 Bun 压缩包 \"$bun_zip_file\""
+    fi
+
+    unzip -oqd "$bin_dir" "$bun_zip_file" ||
+        error '无法使用 unzip 提取 Bun'
+
+    mv "$bin_dir/$bun_zip_name/$exe_name" "$exe" ||
+        error '无法移动提取的 Bun 到目标位置'
+
+    rm -r "$bun_zip_file" "$bin_dir/$bun_zip_name"
 fi
 
 exit 0

@@ -75,8 +75,6 @@ if [ "$W_INSTALL_TYPE" == "online" ]; then
         curl --fail --location --output "$zip_file" "$bun_uri" ||
             error "无法从 \"$bun_uri\" 下载 Bun"
     fi
-else
-    error "敬请期待"
 fi
 
 exit 0
