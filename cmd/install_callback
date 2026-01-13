@@ -13,6 +13,8 @@ install_env=/var/apps/fnos-plugin-bun/target
 bin_dir=$install_env/bin
 exe=$bin_dir/$exe_name
 
+bun_zip_file=$(find $install_env/ -type f -name 'bun-*' | sort | head -n 1)
+
 if [ "$W_INSTALL_TYPE" == "online" ]; then
     tmp_dir=/tmp/bun-tmp-package
     zip_file=$tmp_dir/$exe_name.zip
@@ -38,8 +40,11 @@ if [ "$W_INSTALL_TYPE" == "online" ]; then
         error '无法设置 Bun 可执行文件的权限'
 
     rm -r "$bun_unzip_dir" "$zip_file" "$tmp_dir"
+    
+    if [[ -f $bun_zip_file ]]; then
+        rm -r "$bun_zip_file"
+    fi
 else
-    bun_zip_file=$(find $install_env/ -type f -name 'bun-*' | sort | head -n 1)
     bun_zip_name=$(basename $bun_zip_file | sed 's/.zip//')
     
     if [[ ! -f $bun_zip_file ]]; then
