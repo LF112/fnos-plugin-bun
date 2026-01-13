@@ -57,6 +57,9 @@ else
     mv "$bin_dir/$bun_zip_name/$exe_name" "$exe" ||
         error '无法移动提取的 Bun 到目标位置'
 
+    chmod +x "$exe" ||
+        error '无法设置 Bun 可执行文件的权限'
+
     rm -r "$bun_zip_file" "$bin_dir/$bun_zip_name"
 fi
 
