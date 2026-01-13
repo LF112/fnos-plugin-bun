@@ -39,7 +39,7 @@ fnos-plugin-bun 是为**飞牛OS**（FnOS）打造的 Bun 运行时环境支持�
 
 ### 方式一：离线安装 (推荐)
 
-适用于内网环境或网络受限场景，预装 Bun v1.3.6 (仅支持 x86_64 架构)。
+适用于内网环境或网络受限场景，预装 Bun v1.3.6 baseline 版本（仅包含 x86_64 架构离线包）。
 
 1. 在飞牛OS应用商店中找到 **Bun**
 2. 选择 **离线安装**
@@ -144,7 +144,7 @@ fnos-plugin-bun/
 
 ## 📝 开发者
 
-- **维护者**: [oven-sh](https://bun.sh)
+- **维护者**: [oven-sh](https://github.com/oven-sh)
 - **分发者**: [LF112 (futiwolf)](https://lf112.net)
 
 ## 📄 许可证
