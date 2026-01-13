@@ -143,7 +143,7 @@ fnos-plugin-bun/
 
 ## 📝 开发者
 
-- **Bun 维护者**: [oven-sh](https://bun.com)
+- **Bun 项目维护**: [Bun 官方 (oven-sh)](https://bun.com)
 - **插件分发者**: [LF112 (futiwolf)](https://lf112.net)
 
 ## 📄 许可证
