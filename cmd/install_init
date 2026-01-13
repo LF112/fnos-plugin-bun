@@ -60,22 +60,21 @@ if [ "$W_INSTALL_TYPE" == "online" ]; then
     esac
 
     exe_name=bun
-    bun_uri=$github_repo/releases/latest/download/bun-$target.zip
+    tmp_dir=/tmp/bun-tmp-package
+    zip_file=$tmp_dir/$exe_name.zip
 
-    install_env=/var/apps/fnos-plugin-bun
-    bin_env=\$$install_env/bin
-
-    install_dir=${!install_env:-$HOME/.bun}
-    bin_dir=$install_dir/bin
-    exe=$bin_dir/bun
-
-    error "bun_uri=$bun_uri, install_dir=$install_dir, bin_dir=$bin_dir, exe=$exe"
-
-    if [[ ! -d $bin_dir ]]; then
-        mkdir -p "$bin_dir" ||
-            error "无法创建安装目录 \"$bin_dir\""
+    if [[ ! -d $tmp_dir ]]; then
+        mkdir -p "$tmp_dir" ||
+            error "无法创建临时目录 \"$tmp_dir\""
     fi
 
+    # 如果 Bun.zip 存在就跳过下载
+    if [[ ! -f "$zip_file" ]]; then
+        bun_uri=$github_repo/releases/latest/download/bun-$target.zip
+    
+        curl --fail --location --output "$zip_file" "$bun_uri" ||
+            error "无法从 \"$bun_uri\" 下载 Bun"
+    fi
 else
     error "敬请期待"
 fi

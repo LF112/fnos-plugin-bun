@@ -1,1 +1,7 @@
-{}
+{
+    "usr-local-linker": {
+        "bin": [
+            "/var/apps/fnos-plugin-bun/target/bin/bun"
+        ]
+    }
+}

@@ -1,5 +1,45 @@
 #!/bin/bash
 
-### This script is called after the user installs the application.
+
+W_INSTALL_TYPE="$wizard_install_type"
+
+error() {
+    echo "$@" > $TRIM_TEMP_LOGFILE
+    exit 1
+}
+
+
+if [ "$W_INSTALL_TYPE" == "online" ]; then
+    exe_name=bun
+
+    tmp_dir=/tmp/bun-tmp-package
+    zip_file=$tmp_dir/$exe_name.zip
+
+    if [[ ! -f $zip_file ]]; then
+        error "无法找到 Bun 压缩包 \"$zip_file\""
+    fi
+
+    install_env=/var/apps/fnos-plugin-bun/target
+    bin_dir=$install_env/bin
+    exe=$bin_dir/$exe_name
+
+    if [[ ! -d $bin_dir ]]; then
+        mkdir -p "$bin_dir" ||
+            error "无法创建安装目录 \"$bin_dir\""
+    fi
+
+    unzip -oqd "$bin_dir" "$zip_file" ||
+        error '无法使用 unzip 提取 Bun'
+
+    bun_unzip_dir=$(find $bin_dir -maxdepth 1 -type d -name 'bun-*' | sort | head -n 1)
+
+    mv "$bun_unzip_dir/$exe_name" "$exe" ||
+        error '无法移动提取的 Bun 到目标位置'
+
+    chmod +x "$exe" ||
+        error '无法设置 Bun 可执行文件的权限'
+
+    rm -r "$bun_unzip_dir" "$zip_file" "$tmp_dir"
+fi
 
 exit 0
