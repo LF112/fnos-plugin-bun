@@ -4,7 +4,7 @@
 
 # fnos-plugin-bun
 
-**🚀 飞牛OS的Bun运行时环境插件**
+**飞牛 Bun 运行时环境插件**
 
 [![Version](https://img.shields.io/badge/version-1.3.6-blue.svg)](https://github.com/LF112/fnos-plugin-bun)
 [![Bun](https://img.shields.io/badge/Bun-v1.3.6-black.svg)](https://bun.sh)
@@ -32,32 +32,33 @@ fnos-plugin-bun 是为**飞牛OS**（FnOS）打造的 Bun 运行时环境支持�
 - **架构支持**: 
   - ✅ x86_64 (AMD64) - 支持离线/在线安装
   - ✅ ARM64 (aarch64) - 仅支持在线安装
-- **依赖**: unzip (在线安装时需要)
+- **依赖**: unzip
 
 ## 📦 安装方式
 
-### 方式一：离线安装 (推荐)
-
-适用于内网环境或网络受限场景，预装 Bun v1.3.6 baseline 版本（仅包含 x86_64 架构离线包）。
-
-1. 在飞牛OS应用商店中找到 **Bun**
-2. 选择 **离线安装**
-3. 等待安装完成
-
-### 方式二：在线安装
+### 方式一：在线安装 (推荐)
 
 支持所有架构，自动下载最新版本。
 
-1. 在飞牛OS应用商店中找到 **Bun**
-2. 选择 **在线安装**
+1. 打开飞牛「应用中心」
+2. 选择 **「手动安装」** 并上传 fnos-plugin-bun.fpk
 3. (可选) 配置 GitHub 镜像地址加速下载
 4. 等待下载和安装完成
 
-> 💡 **提示**: 在线安装时建议配置代理或使用 GitHub 镜像以提高下载速度。
+> 💡 : 在线安装时建议配置代理或使用 GitHub 镜像以提高下载速度。
 
-## 🚀 使用指南
+### 方式二：离线安装
 
-### 在飞牛应用中声明依赖
+适用于内网环境或网络受限场景，预装 Bun v1.3.6 baseline 版本（仅包含 x86_64 架构离线包）。
+
+1. 打开飞牛「应用中心」
+2. 选择 **「手动安装」** 并上传 fnos-plugin-bun.fpk
+3. 在安装引导选择「离线安装」
+4. 等待解压安装完成
+
+## 自定义插件使用指南
+
+### 声明依赖
 
 如果您的飞牛应用需要使用 Bun 环境，请在 `manifest` 文件中声明依赖：
 
@@ -116,17 +117,7 @@ fnos-plugin-bun/
 └── README.md                  # 项目说明文档
 ```
 
-## 🔧 技术细节
-
-### 自动架构检测
-
-安装脚本会自动检测系统架构和CPU特性：
-
-- 检测是否支持 AVX2 指令集
-- 自动选择 baseline 或优化版本
-- 支持 musl libc (Alpine Linux)
-
-### 安装位置
+## 安装位置
 
 - **安装目录**: `/var/apps/fnos-plugin-bun/`
 - **可执行文件**: `/var/apps/fnos-plugin-bun/target/bin/bun`
@@ -140,15 +131,6 @@ fnos-plugin-bun/
 3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
 4. 推送到分支 (`git push origin feature/AmazingFeature`)
 5. 开启 Pull Request
-
-## 📝 开发者
-
-- **Bun 项目维护**: [Bun 官方 (oven-sh)](https://bun.com)
-- **插件分发者**: [LF112 (futiwolf)](https://lf112.net)
-
-## 📄 许可证
-
-本项目遵循相应的开源许可协议。Bun 本身遵循 MIT 许可证。
 
 ## 🔗 相关链接
 
@@ -166,7 +148,5 @@ fnos-plugin-bun/
 <div align="center">
 
 **Enjoy coding with Bun on FnOS! 🎉**
-
-Made with ❤️ by [LF112](https://lf112.net)
 
 </div>
